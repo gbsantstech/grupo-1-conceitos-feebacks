@@ -29,16 +29,16 @@ const Accordion = ({title, feedbacks}) => {
 const App = () => {
   const concepts = [
     {
-      title: 'Conceito 1',
-      feedbacks: ['Feedback 1 para Conceito 1', 'Feedback 2 para Conceito 1'],
+      title: 'Tarefa 1',
+      feedbacks: ['Feedback da tarefa 1'],
     },
     {
-      title: 'Conceito 2',
-      feedbacks: ['Feedback 1 para Conceito 2', 'Feedback 2 para Conceito 2'],
+      title: 'Tarefa 2',
+      feedbacks: [ 'Feedback da tarefa 2'],
     },
     {
-      title: 'Conceito 3',
-      feedbacks: ['Feedback 1 para Conceito 3', 'Feedback 2 para Conceito 3'],
+      title: 'Tarefa 3',
+      feedbacks: ['Feedback da tarefa 3'],
     },
   ];
 
@@ -57,16 +57,17 @@ const styles = StyleSheet.create({
     padding: 16,
   },
   titleContainer: {
-    backgroundColor: '#e0e0e0',
+    backgroundColor: '#205395',
     padding: 16,
     marginBottom: 8,
   },
   title: {
     fontSize: 16,
     fontWeight: 'bold',
+    color:"#fff"
   },
   feedbackContainer: {
-    backgroundColor: '#f5f5f5',
+    backgroundColor: '#D9D9D9',
     padding: 16,
   },
   feedback: {
