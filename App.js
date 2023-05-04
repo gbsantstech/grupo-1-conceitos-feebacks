@@ -1,11 +1,12 @@
 import React from 'react';
-import { View } from 'react-native';
+import { Text, View } from 'react-native';
 import Accordion from './Accordion';
 
 const App = () => {
   return (
-    <View>
-      <Accordion grupoId={1} estudanteId={1} />
+    <View style={{flex:1,justifyContent:'center',alignItems:'center'}}>
+      <Accordion />
+      {/* <Text>d</Text> */}
     </View>
   );
 };

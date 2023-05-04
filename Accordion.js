@@ -1,47 +1,39 @@
 import React, { useState, useEffect } from 'react';
-import { View, Text, TouchableOpacity, FlatList, StyleSheet } from 'react-native';
+import { View, Text, TouchableOpacity, FlatList, StyleSheet, SafeAreaView } from 'react-native';
 import axios from 'axios';
+
+const api=axios.create({
+  baseURL:'http://academico3.rj.senac.br/api/',
+})
 
 const Accordion = ({ grupoId, estudanteId }) => {
   const [dados, setDados] = useState([]);
 
+  const Item = ({item}) => (
+    <View>
+      <Text style={styles.title}>{item.id}</Text>
+      <Text style={styles.title}>{item.dataInicio}</Text>
+      <Text style={styles.title}>{item.dataFim}</Text>
+    </View>
+  );
+
   useEffect(() => {
-    const fetchData = async () => {
-      const result = await axios.get(`http://academico3.rj.senac.br/api/Acompanhamento/filterByBrupoIdByEstudanteId/${grupoId}/${estudanteId}`);
-      setDados(result.data);
-    };
-
-    fetchData();
-  }, []);
-
-  const renderHeader = (item) => {
-    return (
-      <View style={styles.header}>
-        <Text style={styles.headerText}>{item.conceito}</Text>
-      </View>
-    );
-  };
-
-  const renderContent = (item) => {
-    return (
-      <View style={styles.content}>
-        <Text style={styles.contentText}>{item.feedback}</Text>
-      </View>
-    );
-  };
+    api.get(`/Acompanhamento/filterByBrupoIdByEstudanteId/${1}/${1}`)
+      .then(data=>{
+        setDados(data.data)
+        // dados.push(data.request._response)
+      });
+    }, []);
+                
 
   return (
-    <View style={styles.container}>
-      <FlatList
-        data={dados}
-        renderItem={({ item }) => (
-          <TouchableOpacity>
-            {renderHeader(item)}
-            {renderContent(item)}
-          </TouchableOpacity>
-        )}
-      />
-    </View>
+    <SafeAreaView style={styles.container}>
+    <FlatList
+      data={dados}
+      renderItem={({item}) => <Item item={item} />}
+      keyExtractor={item => item.id}
+    />
+  </SafeAreaView>
   );
 };
 
